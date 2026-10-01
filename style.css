@@ -189,6 +189,8 @@ body {
 }
 .post .card{
     border: none;
+    display: flex;
+    flex-direction: row;
 }
 
 .filterDiv{
