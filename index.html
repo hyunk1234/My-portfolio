@@ -276,50 +276,59 @@
                 <p>hyunk0617@gmail.com</p>
               </div>
             </div>
-            <div class="row justify-content-evenly">
-              <div class="col-1">
-                <i class="bi bi-globe-americas"></i>
-              </div>
-            </div>
           </div>
           <div class="col-md-5 col-10 mt-3 mt-md-0" data-aos="slide-left">
-            <div class="contact-form">
+            <form id="contactForm">
+              <div class="contact-form">
               <div class="mb-3">
                 <input
                   type="text"
                   class="form-control"
-                  id="exampleFormControlInput1"
+                  id="name"
+                  name="name"
                   placeholder="Name"
+                  required
                 />
+                <span class="error-message" id="nameError"></span>
               </div>
               <div class="mb-3">
                 <input
                   type="email"
                   class="form-control"
-                  id="exampleFormControlInput1"
+                  id="email"
+                  name="email"
                   placeholder="E-mail"
+                  required
                 />
+                <span class="error-message" id="emailError"></span>
               </div>
               <div class="mb-3">
                 <input
                   type="text"
                   class="form-control"
-                  id="exampleFormControlInput1"
+                  id="phone"
+                  name="phone"
                   placeholder="Mobile No."
+                  required
                 />
+                <span class="error-message" id="phoneError"></span>
               </div>
               <div class="mb-3">
                 <textarea
                   class="form-control"
-                  id="exampleFormControlTextarea1"
+                  id="message"
+                  name="message"
                   placeholder="Message"
                   rows="5"
+                  required
                 ></textarea>
+                <span class="error-message" id="messageError"></span>
               </div>
-              <button class="c-btn h-btn mt-3 py-3 px-5 rounded-pill">
+              <button type="submit" class="c-btn h-btn mt-3 py-3 px-5 rounded-pill">
                 Submit
               </button>
             </div>
+            </form>
           </div>
         </div>
       </section>
@@ -373,4 +382,5 @@
           offset: 50,
         });
       </script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="script.js"></script>
