@@ -1,3 +1,41 @@
+// Contact form sending email using EmailJS
+emailjs.init({
+  publicKey: "AqbzkfUM-mQRkNr_I",
+});
+
+const contactForm = document.getElementById("contactForm");
+const submitButton = contactForm.querySelector("button[type='submit']");
+
+contactForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  submitButton.disabled = true;
+  submitButton.textContent = "Sending...";
+
+  emailjs
+    .sendForm("service_ese386j", "template_kowdbvq", contactForm)
+    .then(function () {
+      submitButton.textContent = "Message Sent ✓";
+
+      contactForm.reset();
+
+      setTimeout(function () {
+        submitButton.disabled = false;
+        submitButton.textContent = "Send Message";
+      }, 3000);
+    })
+    .catch(function (error) {
+      console.error("EmailJS Error:", error);
+
+      submitButton.disabled = false;
+      submitButton.textContent = "Failed to Send";
+
+      setTimeout(function () {
+        submitButton.textContent = "Send Message";
+      }, 3000);
+    });
+});
+
 //filter projects
 filterSelection("all");
 function filterSelection(c) {
@@ -46,41 +84,3 @@ for (var i = 0; i < btns.length; i++) {
     this.className += " active";
   });
 }
-
-// Contact form sending email using EmailJS
-emailjs.init({
-  publicKey: "AqbzkfUM-mQRkNr_I",
-});
-
-const contactForm = document.getElementById("contact-form");
-const submitButton = contactForm.querySelector("button[type='submit']");
-
-contactForm.addEventListener("submit", function (event) {
-  event.preventDefault();
-
-  submitButton.disabled = true;
-  submitButton.textContent = "Sending...";
-
-  emailjs
-    .sendForm("service_ese386j", "template_kowdbvq", contactForm)
-    .then(function () {
-      submitButton.textContent = "Message Sent ✓";
-
-      contactForm.reset();
-
-      setTimeout(function () {
-        submitButton.disabled = false;
-        submitButton.textContent = "Send Message";
-      }, 3000);
-    })
-    .catch(function (error) {
-      console.error("EmailJS Error:", error);
-
-      submitButton.disabled = false;
-      submitButton.textContent = "Failed to Send";
-
-      setTimeout(function () {
-        submitButton.textContent = "Send Message";
-      }, 3000);
-    });
-});
