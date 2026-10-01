@@ -191,7 +191,9 @@ body {
     border: none;
 }
 
-
+.filterDiv{
+    display: none;
+}
 
 .show{
     display: block;
