@@ -100,3 +100,55 @@ for (var i = 0; i < btns.length; i++) {
     this.className += " active";
   });
 }
+
+// Typing effect
+document.addEventListener("DOMContentLoaded", function () {
+  const typingElement = document.getElementById("typing-text");
+
+  // Stop if the typing element isn't on the page
+  if (!typingElement) return;
+
+  const words = [
+    "Computer Science Student",
+    "Web Developer",
+    "Software Engineer",
+    "AI/ML Enthusiast",
+  ];
+
+  let wordIndex = 0;
+  let characterIndex = 0;
+  let isDeleting = false;
+
+  const typingSpeed = 100;
+  const deletingSpeed = 50;
+  const pauseAfterTyping = 1500;
+
+  function type() {
+    const currentWord = words[wordIndex];
+
+    if (isDeleting) {
+      characterIndex--;
+    } else {
+      characterIndex++;
+    }
+
+    typingElement.textContent = currentWord.substring(0, characterIndex);
+
+    let delay = isDeleting ? deletingSpeed : typingSpeed;
+
+    if (!isDeleting && characterIndex === currentWord.length) {
+      // Pause before deleting
+      isDeleting = true;
+      delay = pauseAfterTyping;
+    } else if (isDeleting && characterIndex === 0) {
+      // Move to the next phrase
+      isDeleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+      delay = 400;
+    }
+
+    setTimeout(type, delay);
+  }
+
+  type();
+});
